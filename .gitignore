@@ -10,4 +10,3 @@
 
 # Package and environment files
 .venv
-uv.lock
