@@ -22,10 +22,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    # Checkout the branch code
-    - name: Checkout repository
-      uses: actions/checkout@v4
+#  build:
+#    # Checkout the branch code
+#    - name: Checkout repository
+#      uses: actions/checkout@v4
 
 #    # Install uv for fast package management
 #    - name: Install uv
@@ -46,7 +46,7 @@ jobs:
 
   # Single deploy job since we're just deploying
   deploy:
-    needs: build
+#    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
