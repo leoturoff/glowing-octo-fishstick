@@ -1,16 +1,37 @@
-name: Deploy Static Site
+name: Build and Deploy Pyodide App
 
 on:
   push:
     branches: [main]
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          path: ./
-      - uses: actions/deploy-pages@v4
+          python-version: "3.11"
+
+      - name: Install dependencies for parser
+        run: pip install toml
+
+      - name: Parse pyproject.toml to extract Pyodide-compatible deps
+        run: python pyodide-filter.py
+
+      - name: Build Pyodide app (optional step if bundling or templating)
+        run: |
+          mkdir dist
+          cp index.html script.js main.py pyodide-requirements.txt dist/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

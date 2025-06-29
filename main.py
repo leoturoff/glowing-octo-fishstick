@@ -1,6 +1,12 @@
-def main():
-    print("Hello from glowing-octo-fishstick!")
+# main.py
+from math_utils.functions import *
 
-
-if __name__ == "__main__":
-    main()
+# def run(command: str, *args):
+#     if command == "differentiate":
+#         expr, var = args
+#         return differentiate(expr, var)
+#     elif command == "solve_quadratic":
+#         a, b, c = map(float, args)
+#         return solve_quadratic(a, b, c)
+#     else:
+#         return f"Unknown command: {command}"
