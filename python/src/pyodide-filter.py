@@ -26,4 +26,5 @@ def extract_pyodide_deps(pyproject_path="pyproject.toml", output="pyodide-requir
     print(f"✅ Wrote {len(pyodide_deps)} Pyodide-compatible dependencies to {output}")
 
 if __name__ == "__main__":
-    extract_pyodide_deps()
+    extract_pyodide_deps(pyproject_path="../pyproject.toml",
+                         output="../../js/pyodide-requirements.txt")

@@ -1,5 +1,4 @@
 # main.py
-from math_utils.functions import *
 
 # def run(command: str, *args):
 #     if command == "differentiate":

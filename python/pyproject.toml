@@ -5,3 +5,8 @@ description = "GitHub Actions practice repository"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
+
+[dependency-groups]
+dev = [
+    "toml>=0.10.2",
+]
