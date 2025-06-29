@@ -108,6 +108,7 @@ async function runPython(fnName) {
 // Initialize Pyodide and load Python code
 async function init() {
   try {
+    document.getElementById("output").textContent = "Click the button for some lightly toasted wisdom!";
     await setupPyodide();   // Initialize Pyodide
     await loadPythonCode();  // Load the Python code
     await loadLocalFileToPyodide("python/data/toast_quotes.json", "/data/toast_quotes.json");
