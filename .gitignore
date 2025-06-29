@@ -1,6 +1,12 @@
 # Python generated files
 *.DS_Store
 *__pycache__*
+*.egg*
+*/dist/*
+
+# Environment files
+.pytest_cache
+.vscode
 
 # Package and environment files
 .venv
