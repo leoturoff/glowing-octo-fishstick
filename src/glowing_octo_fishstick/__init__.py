@@ -1,21 +1,13 @@
-from numpy.typing import ArrayLike
+import json
+import random
 
 
-def add_n(x: float | int | ArrayLike, n:float | int=1) -> float | int | ArrayLike:
+def get_quote():
     """
-    Adds 1 to the input number.
-    
-    General Inputs
-    :x:float|int|array
-        A number or array
-    
-    Optional Inputs
-    :n:float|int
-        A number
-    
-    Returns
-    :n+1:float|int|array
-        The original number, plus 1
+    Select a random quote
     """
-    y = x + n
-    return y
+    with open('data/toast_quotes.json', 'r') as file:
+        toast_quotes = json.load(file).get('toast_quotes', [])
+    
+    random_quote, = random.sample(toast_quotes, 1)
+    return random_quote

@@ -1,17 +1,13 @@
-import numpy as np
+import random
 from pytest import fixture
 
-from glowing_octo_fishstick import add_n
-
-# Fixtures
-@fixture
-def array():
-    return np.array([0, 1, 2, 3])
+random.seed(1)
 
 @fixture
-def expected_array():
-    return np.array([1, 2, 3, 4])
+def toast_quote():
+    return 'Be the toast that lifts the breakfast table.'
 
-# Tests
-def test_add_n(array, expected_array):
-    assert (add_n(array) == expected_array).all()
+
+def test_get_quote(toast_quote):
+    from glowing_octo_fishstick import get_quote
+    assert get_quote() == toast_quote
