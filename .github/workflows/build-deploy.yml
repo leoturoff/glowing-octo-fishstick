@@ -27,25 +27,26 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # Install uv for fast package management
-    - name: Install uv
-      uses: astral-sh/setup-uv@v5
-
-    # Set up Python from the pinned version
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version-file: '.python-version'
-
-    # Synchronize the uv environment with the uv.lock file
-    - name: Install dependencies
-      run: uv sync --locked --all-extras
-
-    - name: Parse pyproject.toml to extract Pyodide-compatible deps
-      run: python python/src/pyodide_filter.py python/pyproject.toml js/pyodide-requirements.txt
+#    # Install uv for fast package management
+#    - name: Install uv
+#      uses: astral-sh/setup-uv@v5
+#
+#    # Set up Python from the pinned version
+#    - name: Set up Python
+#      uses: actions/setup-python@v5
+#      with:
+#        python-version-file: '.python-version'
+#
+#    # Synchronize the uv environment with the uv.lock file
+#    - name: Install dependencies
+#      run: uv sync --locked --all-extras
+#
+#    - name: Parse pyproject.toml to extract Pyodide-compatible deps
+#      run: python python/src/pyodide_filter.py python/pyproject.toml js/pyodide-requirements.txt
 
   # Single deploy job since we're just deploying
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
