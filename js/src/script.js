@@ -53,9 +53,8 @@ async function loadPythonCode() {
     try {
       pyodide.FS.mkdir("/python");
       pyodide.FS.mkdir("/python/src");
-      pyodide.FS.mkdir("/python/src/math_utils");
 
-      const filePath = "python/src/math_utils/functions.py";
+      const filePath = "python/src/get_quote.py";
       const fileContent = await (await fetch(filePath)).text();
 
       pyodide.FS.writeFile(`/` + filePath, fileContent, { encoding: "utf8" });
@@ -64,7 +63,8 @@ async function loadPythonCode() {
       await pyodide.runPython(`
         import sys
         sys.path.append("/python/src")
-        from math_utils.functions import *
+        # expose python functions here!
+        from get_quote import get_quote
     `);
 
       console.log("✅ Python code loaded successfully");
@@ -73,10 +73,21 @@ async function loadPythonCode() {
     }
 }
 
-async function runPython(fnName, input) {
+async function runPythonWithInput(fnName, input) {
   try {
     const result = await pyodide.runPython(`${fnName}(${input})`);
     document.getElementById("output").textContent = `Result: ${result}`;
+  } catch (error) {
+    console.error("Error executing Python:", error);
+  }
+}
+
+
+async function runPython(fnName) {
+  try {
+    const result = await pyodide.runPython(`${fnName}()`);
+    // this is where the output is set!
+    document.getElementById("output").textContent = `${result}`;
   } catch (error) {
     console.error("Error executing Python:", error);
   }
@@ -87,8 +98,7 @@ async function init() {
   try {
     await setupPyodide();   // Initialize Pyodide
     await loadPythonCode();  // Load the Python code
-    await loadLocalFileToPyodide("python/data/test.json", "/data/test.json");
-    console.log(pyodide.FS.readdir("/data"));
+    await loadLocalFileToPyodide("python/data/toast_quotes.json", "/data/toast_quotes.json");
   } catch (error) {
     console.error("Error during initialization:", error);
   }
