@@ -2,7 +2,7 @@ name: Build and Deploy Pyodide App
 
 on:
   push:
-    branches: [main]
+    branches: [feature/add-website]
 
 jobs:
   build-deploy:
