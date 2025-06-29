@@ -21,7 +21,7 @@ jobs:
         run: pip install toml typer
 
       - name: Parse pyproject.toml to extract Pyodide-compatible deps
-        run: cd python/src && python pyodide_filter.py ../pyproject.toml ../../js/pyodide-requirements.txt
+        run: python python/src/pyodide_filter.py python/pyproject.toml js/pyodide-requirements.txt
 
       - name: Build Pyodide app (optional step if bundling or templating)
         run: |
