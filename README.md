@@ -1,4 +1,6 @@
 # glowing-octo-fishstick
+GitHub Actions practice repository. Implements a website which generates toast quotes.
+
 
 ## Developing
 
@@ -10,7 +12,16 @@ Note that to generate dependencies from pyproject.toml, you should run
 
 ## Tests
 
-To setup javascript tests:
+### Python
+
+To test python:
+
+cd into the python directory and run `uv sync --all-extras`, then try out the code 
+using `uv run <python script>`.
+
+### JavaScript
+
+To setup javascript tests (if using):
 
 ```bash
 npm init -y  # Initialize a new Node.js project (if you haven't already)
@@ -21,4 +32,3 @@ To run tests (CURRENTLY FAILING):
 ```bash
 npm test
 ```
-
