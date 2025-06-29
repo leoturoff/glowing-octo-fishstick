@@ -41,7 +41,7 @@ jobs:
 
     # Synchronize the uv environment with the uv.lock file
     - name: Install dependencies
-      run: uv sync --locked --all-extras
+      run: cd python && uv sync --locked --all-extras && cd ..
 
     - name: Parse pyproject.toml to extract Pyodide-compatible deps
       run: python python/src/pyodide_filter.py python/pyproject.toml js/pyodide-requirements.txt
