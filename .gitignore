@@ -10,3 +10,9 @@
 
 # Package and environment files
 .venv
+
+# PyCharm
+.idea
+
+# Node tests
+*/node_modules

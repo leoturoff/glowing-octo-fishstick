@@ -24,11 +24,11 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version-file: '.python-version'
+        python-version-file: 'python/.python-version'
     
     # Synchronize the uv environment with the uv.lock file
     - name: Install dependencies
-      run: uv sync --locked --all-extras
+      run: cd python && uv sync --locked --all-extras
 
     # Run the Ruff linter
     - name: Run Ruff linter
@@ -38,4 +38,4 @@ jobs:
 
     # Run the pytest script with uv
     - name: Run tests
-      run: uv run pytest tests/
+      run: cd python && uv run pytest tests/

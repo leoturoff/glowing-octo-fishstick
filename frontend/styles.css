@@ -1,0 +1,22 @@
+body {
+  background-color: #483C32; /* Taupe */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#toastText {
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  color: #000080; /* Dark navy */
+}

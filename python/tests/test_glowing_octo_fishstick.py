@@ -9,5 +9,5 @@ def toast_quote():
 
 
 def test_get_quote(toast_quote):
-    from glowing_octo_fishstick import get_quote
+    from python.src.get_quote import get_quote
     assert get_quote() == toast_quote

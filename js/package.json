@@ -1,0 +1,24 @@
+{
+  "name": "glowing-octo-fishstick",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+     "test": "jest"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leoturoff/glowing-octo-fishstick.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leoturoff/glowing-octo-fishstick/issues"
+  },
+  "homepage": "https://github.com/leoturoff/glowing-octo-fishstick#readme",
+  "devDependencies": {
+    "jest": "^30.0.3"
+  }
+}
