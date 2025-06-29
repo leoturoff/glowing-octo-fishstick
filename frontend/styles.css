@@ -18,7 +18,7 @@ button {
     z-index: 1;
 }
 
-#toastText {
+#output {
     margin-top: 1.5rem;
     font-size: 2rem;
     color: #fff0e8;
@@ -27,12 +27,12 @@ button {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-#toastText.hidden {
+#output.hidden {
     opacity: 0;
     transform: translateY(-20px);
 }
 
-#toastText.visible {
+#output.visible {
     opacity: 1;
     transform: translateY(0px);
 }

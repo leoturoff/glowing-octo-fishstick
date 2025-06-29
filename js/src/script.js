@@ -82,13 +82,25 @@ async function runPythonWithInput(fnName, input) {
   }
 }
 
+async function updateToastText() {
+    // this is where the output is set!
+    output_text = document.getElementById("output")
+    result = await runPython('get_quote')
+
+      output_text.classList.remove('visible');
+      output_text.classList.add('hidden');
+
+      setTimeout(() => {
+        output_text.textContent = `${result}`;
+        output_text.classList.remove('hidden');
+        output_text.classList.add('visible');
+      }, 500);
+}
 
 async function runPython(fnName) {
   try {
-    const result = await pyodide.runPython(`${fnName}()`);
-    // this is where the output is set!
-    document.getElementById("output").textContent = `${result}`;
-  } catch (error) {
+    return await pyodide.runPython(`${fnName}()`);
+      } catch (error) {
     console.error("Error executing Python:", error);
   }
 }
