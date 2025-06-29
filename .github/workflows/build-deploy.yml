@@ -43,6 +43,9 @@ jobs:
     - name: Install dependencies
       run: cd python && uv sync --locked --all-extras && cd ..
 
+    - name: TREEEE
+      run: uv tree
+
     - name: Parse pyproject.toml to extract Pyodide-compatible deps
       run: uv run python/src/pyodide_filter.py python/pyproject.toml js/pyodide-requirements.txt
 
