@@ -1,6 +1,9 @@
 # pyodide_filter.py
 import toml
-import sys
+import typer
+from pathlib import Path
+
+app = typer.Typer()
 
 # Replace with actual list of Pyodide-supported packages
 SUPPORTED_PACKAGES = {
@@ -8,9 +11,13 @@ SUPPORTED_PACKAGES = {
     "micropip", "pyodide-http"
 }
 
-def extract_pyodide_deps(pyproject_path="pyproject.toml", output="pyodide-requirements.txt"):
-    with open(pyproject_path, "r") as f:
-        data = toml.load(f)
+@app.command()
+def extract(
+    pyproject_path: Path = typer.Argument(..., help="Path to the pyproject.toml file"),
+    output: Path = typer.Argument(..., help="Output file for Pyodide-compatible dependencies")
+):
+    """Extract Pyodide-supported dependencies from pyproject.toml."""
+    data = toml.load(pyproject_path)
 
     deps = data.get("project", {}).get("dependencies", [])
     pyodide_deps = []
@@ -20,11 +27,10 @@ def extract_pyodide_deps(pyproject_path="pyproject.toml", output="pyodide-requir
         if name in SUPPORTED_PACKAGES:
             pyodide_deps.append(dep)
 
-    with open(output, "w") as out:
-        out.write("\n".join(pyodide_deps))
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\n".join(pyodide_deps))
 
-    print(f"✅ Wrote {len(pyodide_deps)} Pyodide-compatible dependencies to {output}")
+    typer.echo(f"✅ Wrote {len(pyodide_deps)} Pyodide-compatible dependencies to {output}")
 
 if __name__ == "__main__":
-    extract_pyodide_deps(pyproject_path="../pyproject.toml",
-                         output="../../js/pyodide-requirements.txt")
+    app()
