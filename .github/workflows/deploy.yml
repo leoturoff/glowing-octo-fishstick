@@ -26,7 +26,7 @@ jobs:
       - name: Build Pyodide app (optional step if bundling or templating)
         run: |
           mkdir dist
-          cp index.html script.js main.py pyodide-requirements.txt dist/
+          cp index.html script.js python/src/pyodide-requirements.txt dist/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
