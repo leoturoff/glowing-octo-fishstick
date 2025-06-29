@@ -23,6 +23,7 @@ concurrency:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
     # Checkout the branch code
     - name: Checkout repository
