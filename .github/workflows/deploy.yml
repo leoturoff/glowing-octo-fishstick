@@ -2,7 +2,7 @@ name: Build and Deploy Pyodide App
 
 on:
   push:
-    branches: [feature/add-website]
+    branches: [main]
 
 permissions:
   contents: read
