@@ -1,4 +1,4 @@
-# pyodide-filter.py
+# pyodide_filter.py
 import toml
 import sys
 
