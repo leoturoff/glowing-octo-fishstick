@@ -1,0 +1,7 @@
+# Python generated files
+*.DS_Store
+*__pycache__*
+
+# Package and environment files
+.venv
+uv.lock
