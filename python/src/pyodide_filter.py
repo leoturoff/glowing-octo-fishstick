@@ -1,3 +1,7 @@
+"""
+Usage: $ uv run python pyodide_filter.py ../pyproject.toml ../../js/pyodide-requirements.txt
+"""
+
 # pyodide_filter.py
 import toml
 import typer

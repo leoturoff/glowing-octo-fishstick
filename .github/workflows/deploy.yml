@@ -18,10 +18,10 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies for parser
-        run: pip install toml
+        run: pip install toml typer
 
       - name: Parse pyproject.toml to extract Pyodide-compatible deps
-        run: python python/src/pyodide_filter.py
+        run: python pyodide_filter.py ../pyproject.toml ../../js/pyodide-requirements.txt
 
       - name: Build Pyodide app (optional step if bundling or templating)
         run: |
