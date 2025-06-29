@@ -8,7 +8,7 @@ on:
  
 jobs:
 
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,28 +35,6 @@ jobs:
       uses: chartboost/ruff-action@v1
       with:
         args: check .
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-    # Checkout the branch code
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    # Install uv for fast package management
-    - name: Install uv
-      uses: astral-sh/setup-uv@v5
-
-    # Set up Python from the pinned version
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version-file: '.python-version'
-
-    # Synchronize the uv environment with the uv.lock file
-    - name: Install dependencies
-      run: uv sync --locked --all-extras
 
     # Run the pytest script with uv
     - name: Run tests
