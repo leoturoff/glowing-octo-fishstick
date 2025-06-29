@@ -1,0 +1,7 @@
+[project]
+name = "glowing-octo-fishstick"
+version = "0.1.0"
+description = "GitHub Actions practice repository"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
