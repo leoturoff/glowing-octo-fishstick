@@ -44,7 +44,7 @@ jobs:
       run: cd python && uv sync --locked --all-extras && pwd
 
     - name: Parse pyproject.toml to extract Pyodide-compatible deps
-      run: uv run src/pyodide_filter.py pyproject.toml ../js/pyodide-requirements.txt
+      run: pwd & uv run src/pyodide_filter.py pyproject.toml ../js/pyodide-requirements.txt
 
   # Single deploy job since we're just deploying
   deploy:
